@@ -14,10 +14,12 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/selendra/BEP20-migration/issues"
+    "url": "https://github.com/selendra/BEP20-migration/itoStringssues"
   },
   "homepage": "https://github.com/selendra/BEP20-migration#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^4.1.0"
+    "@openzeppelin/contracts": "^4.1.0",
+    "@truffle/hdwallet-provider": "^1.4.0",
+    "dotenv": "^10.0.0"
   }
 }

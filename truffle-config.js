@@ -1,3 +1,6 @@
+require('dotenv').config();
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+const mnemonic = process.env.MNEMONIC_LOCAL.toString();
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -43,9 +46,9 @@ module.exports = {
     // options below to some value.
     //
     // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
+    //   host: "127.0.0.1",     // Localhost (default: none)
+    //   port: 7545,            // Standard Ethereum port (default: none)
+    //   network_id: 5777,       // Any network (default: none)
     // },
     // Another network with more advanced options...
     // advanced: {
@@ -72,6 +75,16 @@ module.exports = {
     // network_id: 2111,   // This network is yours, in the cloud.
     // production: true    // Treats this network as if it was a public net. (default: false)
     // }
+
+    localDev: {
+      provider: () => new HDWalletProvider(
+        mnemonic,
+        'http://localhost:7545'
+      ),
+      network_id: 5777,
+      skipDryRun: true
+    }
+
   },
 
   // Set default mocha options here, use special reporters etc.
