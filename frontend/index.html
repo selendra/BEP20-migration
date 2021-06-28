@@ -17,18 +17,6 @@
             // Enable etherum connecting from metamask.
             window.ethereum.enable();
 
-            // const provider = detectEthereumProvider()
-
-            // if (provider) {
-            //     console.log("Current block number: " + provider);
-            // } else {
-            //     console.log("Can't get web provider");
-            // }
-
-            // Connect Provider ETH/BSC
-            // var url = 'https://data-seed-prebsc-1-s1.binance.org:8545'; //BSC TESTNET Network
-            // let getProvider = detectEthereumProvider();
-            // var provider = new ethers.providers.Web3Provider('https://data-seed-prebsc-1-s1.binance.org:8545');
             var provider = new ethers.providers.Web3Provider(web3.currentProvider);
 
             var SwapContractAddress = "0xD02D0339Fe732917be8C69159919Ef34cDE8DB8e";
