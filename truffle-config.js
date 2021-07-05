@@ -75,7 +75,15 @@ module.exports = {
     // network_id: 2111,   // This network is yours, in the cloud.
     // production: true    // Treats this network as if it was a public net. (default: false)
     // }
-
+    bscMainnet: {
+      provider: () => new HDWalletProvider(
+        mnemonic,
+        'https://bsc-dataseed.binance.org'
+      ),
+      networkCheckTimeout: 999999,
+      network_id: 56,
+      skipDryRun: true
+    },
     localDev: {
       provider: () => new HDWalletProvider(
         mnemonic,
@@ -105,6 +113,13 @@ module.exports = {
       //  evmVersion: "byzantium"
       // }
     }
+  },
+  plugins: [
+    'truffle-plugin-verify'
+  ],
+  api_keys: {
+    //bscscan: BSCSCANAPIKEY
+    bscscan: process.env.BSC_API_KEYS
   },
 
   // Truffle DB is currently disabled by default; to enable it, change enabled: false to enabled: true

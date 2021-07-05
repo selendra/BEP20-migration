@@ -9,3 +9,9 @@
 6. Admin appproves TokenSwap to withdraw X tokens from New SEL.
 7. Holder calls TokenSwap.swap().
 8. Holder migrated tokens successfully.
+
+#### Mainet deploy
+
+```
+truffle migrate --reset --network bscMainnet
+```

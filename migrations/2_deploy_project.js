@@ -1,8 +1,8 @@
 const TokenSwap = artifacts.require('TokenSwap');
 
 module.exports = function (deployer) {
-    const _oldToken = '0xc7fE9232c55Fab39fd7C89AA459aa03C55Ee283C';
-    const _newToken = '0xE4A8473c6eb635A44c4e7A7A371Ed5743bb5f976';
+    const _oldToken = '0x288d3a87a87c284ed685e0490e5c4cc0883a060a';
+    const _newToken = '0x30bab6b88db781129c6a4e9b7926738e3314cf1c';
 
     deployer.deploy(TokenSwap, _oldToken, _newToken);
 };
