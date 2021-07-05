@@ -19,7 +19,7 @@
 
             var provider = new ethers.providers.Web3Provider(web3.currentProvider);
 
-            var SwapContractAddress = "0xD02D0339Fe732917be8C69159919Ef34cDE8DB8e";
+            var SwapContractAddress = "0x54419268c31678C31e94dB494C509193d7d2BB5D"; //Mainnet BSC Contract
             var SwapContractABI = [
                 {
                     "inputs": [
@@ -107,11 +107,11 @@
 
             async function approve() {
                 let abi = ["function approve(address _spender, uint256 _value) public returns (bool success)"]
-                //ERC20 Contract: 0xe4a8473c6eb635a44c4e7a7a371ed5743bb5f976 
-                let TokenContract = new ethers.Contract('0xe4a8473c6eb635a44c4e7a7a371ed5743bb5f976', abi, signer);
+                //Old ERC20 Contract: 0x288d3A87a87C284Ed685E0490E5C4cC0883a060a 
+                let TokenContract = new ethers.Contract('0x288d3A87a87C284Ed685E0490E5C4cC0883a060a', abi, signer);
 
                 // Approve Spending from Swap contract 
-                await TokenContract.approve(SwapContractAddress, ethers.utils.parseUnits("100", 18))
+                await TokenContract.approve(SwapContractAddress, ethers.utils.parseUnits(Math.pow(10, 18).toString(), 18))
                 console.log("Approving Old Sel contract to spend");
             }
 
