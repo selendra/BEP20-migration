@@ -95,6 +95,7 @@ export default function App() {
           </CardBody>
         </CardStyled>
         <br/>
+        <Subtitle>SEL token version 2 feature:</Subtitle>
         <p>🚀 Token contract verification and other related information to SEL token, our users can check them on BSCscan like whitepaper, social network channels and our official website.</p>
         <p>🚀 For future cross chain transactions, this version is design to work on other chain like Polygon, Etherem and other networks.</p>
         <p>🚀 Use the Token to purchase invitation and share the referral link to join selendra airdrop.</p>
@@ -113,6 +114,7 @@ const Container = styled.div`
   padding: 24px;
 `
 const Title = styled.h1`
+  text-align: center;
   color: #fff;
   font-weight: 800;
   margin-top: 20px;
@@ -161,4 +163,7 @@ const ButtonSwap = styled(Button)`
     border: 1px solid #82d1ca;
     color: #82d1ca;
   }
+`
+const Subtitle = styled.h2`
+  color: #FFF;
 `
