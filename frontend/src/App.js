@@ -82,7 +82,7 @@ export default function App() {
   return (
     <Home>
       <Container>
-        <Title>Swap</Title>
+        <Title>Migrate Contract</Title>
         <CardStyled>
           <CardBody>
             <Form layout="vertical" color="white">
@@ -94,6 +94,10 @@ export default function App() {
             <ButtonSwap type='ghost' onClick={approve}>Approve</ButtonSwap>
           </CardBody>
         </CardStyled>
+        <br/>
+        <p>🚀 Token contract verification and other related information to SEL token, our users can check them on BSCscan like whitepaper, social network channels and our official website.</p>
+        <p>🚀 For future cross chain transactions, this version is design to work on other chain like Polygon, Etherem and other networks.</p>
+        <p>🚀 Use the Token to purchase invitation and share the referral link to join selendra airdrop.</p>
       </Container>
     </Home>
   );
