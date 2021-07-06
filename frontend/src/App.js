@@ -82,7 +82,7 @@ export default function App() {
   return (
     <Home>
       <Container>
-        <Title>Migrate Contract</Title>
+        <Title>Upgrade SEL v2</Title>
         <CardStyled>
           <CardBody>
             <Form layout="vertical" color="white">
@@ -95,10 +95,10 @@ export default function App() {
           </CardBody>
         </CardStyled>
         <br/>
-        <Subtitle>SEL token version 2 feature:</Subtitle>
-        <p>🚀 Token contract verification and other related information to SEL token, our users can check them on BSCscan like whitepaper, social network channels and our official website.</p>
-        <p>🚀 For future cross chain transactions, this version is design to work on other chain like Polygon, Ethereum and other networks.</p>
-        <p>🚀 Use the Token to purchase invitation and share the referral link to join selendra airdrop.</p>
+        <Subtitle>The SEL Token v2 features:</Subtitle>
+        <p>🚀 Token contract verification and other related informations to SEL token v2, all available on BSCscan like Whitepaper, Social Channels and other official info.</p>
+        <p>🚀 For future cross-chains transaction; this version is designed to work with others chains like Polygon, Ethereum and other networks.</p>
+        <p>🚀 Use the Token to purchase invitations and share the referral link to join Selendra airdrop opportunity.</p>
       </Container>
     </Home>
   );
