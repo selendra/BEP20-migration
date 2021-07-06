@@ -7,10 +7,10 @@ import HeaderComponent from './components/Header'
 import FooterComponent from './components/Footer';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <HeaderComponent />
     <App />
     <FooterComponent />
-  </React.StrictMode>,
+  </>,
   document.getElementById('root')
 );

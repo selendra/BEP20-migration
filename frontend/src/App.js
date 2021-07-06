@@ -1,23 +1,33 @@
 import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
-import { Button, Input, Form, message } from 'antd';
+import { Button, Input, Form, message, Modal } from 'antd';
 import styled from 'styled-components';
 import contract from './contract/contract.json';
 
 export default function App() {
+  const modalCustom = {
+    background: "#131a35",
+  }
   const [amount, setAmount] = useState('');
+  const [modal, setModal] = useState(false);
   const SwapContractAddress = "0x54419268c31678C31e94dB494C509193d7d2BB5D";
   const SwapContractABI = contract;
 
-  let SwapContract; 
   let signer;
 
-  useEffect(async() => {
-    if(window.ethereum) {
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
-    } else {
-      message.error("Metamask not detected!!")
+  window.ethereum.on('chainChanged', (_chainId) => window.location.reload());
+  useEffect(() => {
+    async function Validate() {
+      if(window.ethereum) {
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        await window.ethereum.request({ method: 'eth_chainId' }).then(chainId => {
+          if(chainId !== '0x38') setModal(true);
+        })
+      } else {
+        message.error("Metamask not detected!!")
+      }
     }
+    Validate();
   }, []);
 
   try {
@@ -26,7 +36,7 @@ export default function App() {
     provider.listAccounts()
     .then(function(accounts) {
       signer = provider.getSigner(accounts[0]);
-      SwapContract = new ethers.Contract(
+      new ethers.Contract(
         SwapContractAddress,
         SwapContractABI,
         signer
@@ -82,6 +92,16 @@ export default function App() {
   return (
     <Home>
       <Container>
+        <ModalStyled
+          visible={modal}
+          footer=""
+          title=""
+          bodyStyle={modalCustom}
+        >
+          <Title>Alert!</Title>
+          <Subtitle>You are using other network, Please switch to Binance Smart Chain network</Subtitle>
+          <ButtonSwap type='ghost' onClick={() => setModal(false)}>Confirm</ButtonSwap>
+        </ModalStyled>
         <Title>Upgrade SEL v2</Title>
         <CardStyled>
           <CardBody>
@@ -166,4 +186,7 @@ const ButtonSwap = styled(Button)`
 `
 const Subtitle = styled.h2`
   color: #FFF;
+`
+const ModalStyled = styled(Modal)`
+  /* background-color: #000 */
 `
