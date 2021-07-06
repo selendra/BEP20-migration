@@ -97,7 +97,7 @@ export default function App() {
         <br/>
         <Subtitle>SEL token version 2 feature:</Subtitle>
         <p>🚀 Token contract verification and other related information to SEL token, our users can check them on BSCscan like whitepaper, social network channels and our official website.</p>
-        <p>🚀 For future cross chain transactions, this version is design to work on other chain like Polygon, Etherem and other networks.</p>
+        <p>🚀 For future cross chain transactions, this version is design to work on other chain like Polygon, Ethereum and other networks.</p>
         <p>🚀 Use the Token to purchase invitation and share the referral link to join selendra airdrop.</p>
       </Container>
     </Home>
