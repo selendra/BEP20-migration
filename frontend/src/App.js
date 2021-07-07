@@ -18,7 +18,7 @@ export default function App() {
   if(window.ethereum) {
     window.ethereum.on('chainChanged', (_chainId) => window.location.reload());
   }
-    useEffect(() => {
+  useEffect(() => {
     async function Validate() {
       if(window.ethereum) {
         await window.ethereum.request({ method: 'eth_requestAccounts' });
