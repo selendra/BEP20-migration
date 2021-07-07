@@ -13,3 +13,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.ant-modal-content {
+  background-color: transparent!important;
+}
+.ant-modal-close-x {
+  display: none!important;
+}

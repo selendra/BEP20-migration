@@ -7,6 +7,7 @@ import contract from './contract/contract.json';
 export default function App() {
   const modalCustom = {
     background: "#131a35",
+    borderRadius: "4px"
   }
   const [amount, setAmount] = useState('');
   const [modal, setModal] = useState(false);
@@ -92,16 +93,16 @@ export default function App() {
   return (
     <Home>
       <Container>
-        <ModalStyled
+        <Modal
           visible={modal}
           footer=""
           title=""
           bodyStyle={modalCustom}
         >
           <Title>Alert!</Title>
-          <Subtitle>You are using other network, Please switch to Binance Smart Chain network</Subtitle>
+          <Subtitle>You are connect to another network, Please switch to Binance Smart Chain network</Subtitle>
           <ButtonSwap type='ghost' onClick={() => setModal(false)}>Confirm</ButtonSwap>
-        </ModalStyled>
+        </Modal>
         <Title>Upgrade SEL v2</Title>
         <CardStyled>
           <CardBody>
@@ -186,7 +187,4 @@ const ButtonSwap = styled(Button)`
 `
 const Subtitle = styled.h2`
   color: #FFF;
-`
-const ModalStyled = styled(Modal)`
-  /* background-color: #000 */
 `
