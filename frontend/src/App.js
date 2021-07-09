@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { Button, Input, Form, message, Modal } from 'antd';
 import styled from 'styled-components';
-import contract from './contract/contract.json';
+import swapContract from './contract/swapContract.json';
+import { ContractInstance } from './utils/useContract';
 
 export default function App() {
   const modalCustom = {
@@ -11,8 +12,10 @@ export default function App() {
   }
   const [amount, setAmount] = useState('');
   const [modal, setModal] = useState(false);
+  const [balance, setBalance] = useState('');
+  // const [symbol]
   const SwapContractAddress = "0x54419268c31678C31e94dB494C509193d7d2BB5D";
-  const SwapContractABI = contract;
+  const SwapContractABI = swapContract;
 
   let signer;
   if(window.ethereum) {
@@ -21,7 +24,9 @@ export default function App() {
   useEffect(() => {
     async function Validate() {
       if(window.ethereum) {
-        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        await window.ethereum.request({ method: 'eth_requestAccounts' }).then(accounts => {
+          getBepTokenBalance(accounts[0]);
+        });
         await window.ethereum.request({ method: 'eth_chainId' }).then(chainId => {
           if(chainId !== '0x38') setModal(true);
         })
@@ -31,6 +36,15 @@ export default function App() {
     }
     Validate();
   }, []);
+
+  const getBepTokenBalance = async(fromAddress) => {
+    let contract = ContractInstance();
+    let decimal = await contract.methods.decimals().call();
+    // let symbol = await contract.methods.symbol().call();
+    let balance = await contract.methods.balanceOf(fromAddress).call();
+    // setSymbol(symbol);
+    setBalance(balance / Math.pow(10, decimal));
+  }
 
   try {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -109,7 +123,7 @@ export default function App() {
           <CardBody>
             <Form layout="vertical" color="white">
               <FormItem label='Amount'>
-                <InputStyled placeholder="0.00" value={amount} onChange={(e) => setAmount(e.target.value)} />
+                <InputStyled placeholder="0.00" addonAfter={`Max: ${balance}`} value={amount} onChange={(e) => setAmount(e.target.value)} />
               </FormItem>
             </Form>
             <ButtonSwap type='ghost' onClick={swap}>Swap</ButtonSwap>

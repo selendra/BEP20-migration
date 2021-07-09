@@ -20,3 +20,16 @@ code {
 .ant-modal-close-x {
   display: none!important;
 }
+.ant-input,
+.ant-input-group-addon  {
+  background: transparent!important;
+  border: none!important;
+  box-shadow: none!important;
+  font-size: 20px;
+  font-weight: 800;
+  color: #FFF;
+}
+.ant-input-group-addon {
+  color: #82d1ca!important;
+  font-weight: 600;
+}
