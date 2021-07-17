@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
   background-color: #131a35!important;
   color: #FFF!important;
 }
@@ -25,9 +26,9 @@ code {
   background: transparent!important;
   border: none!important;
   box-shadow: none!important;
-  font-size: 20px;
-  font-weight: 800;
-  color: #FFF;
+  font-size: 20px!important;
+  font-weight: 600!important;
+  color: #FFF!important;
 }
 .ant-input-group-addon {
   color: #82d1ca!important;

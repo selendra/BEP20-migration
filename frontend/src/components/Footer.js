@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Row, Col } from 'antd';
+import { NavLink } from 'react-router-dom'
 import selendra from '../assets/sel-logo.png';
 import { ReactComponent as Facebook } from '../assets/facebook.svg';
 import { ReactComponent as Twitter } from '../assets/twitter.svg';
@@ -13,10 +14,17 @@ export default function FooterComponent() {
       <SeparateLine />
       <Footer>
         <Row>
-          <Col span={12}>
+          <Col span={8}>
             <FooterLogo src={selendra} alt='selendra' />
           </Col>
-          <Col span={12}>
+          <Col span={8}>
+            <Row justify='space-around' align='middle' style={{height: '100%'}}>
+              <NavLinkStyled to='/howto'>How to</NavLinkStyled>
+              <NavLinkStyled to='/faqs'>FAQs</NavLinkStyled>
+              <NavLinkStyled to='/about'>About</NavLinkStyled>
+            </Row>
+          </Col>
+          <Col span={8}>
             <Row justify='space-around' align='middle' style={{height: '100%'}}>
               <a href='https://www.facebook.com/selendraio'>
                 <Facebook />
@@ -57,4 +65,8 @@ const FooterLogo = styled.img`
 const SeparateLine = styled.div`
   height: 1px; 
   background: rgba(0, 0, 0, 0) linear-gradient(90deg, rgba(90, 196, 190, 0) 0%, rgb(55, 114, 255) 50%, rgba(194, 0, 251, 0) 100%) repeat scroll 0% 0%;
+`
+const NavLinkStyled = styled(NavLink)`
+  color: #fff;
+  font-weight: 600;
 `

@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import { Row } from 'antd';
+import { NavLink } from 'react-router-dom';
 import selendra from '../assets/sel-logo.png'
 
 export default function HeaderComponent() {
   return (
     <Header>
       <Row justify='center' align='middle' style={{height: '100%'}}>
-        <HeaderLogo src={selendra} alt='selendra' />
+        <NavLink to='/'>
+          <HeaderLogo src={selendra} alt='selendra' />
+        </NavLink>
       </Row>
     </Header>
   )
