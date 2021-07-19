@@ -5,9 +5,12 @@ export default function FaqPage() {
     <Container>
       <Title>FAQs</Title>
       <SubTitle>Why SEL v2?</SubTitle>
-      <Text>SEL v2 is an improvement to SEL v1 missing part in our first contracts. The second version add mint and burn function, which will make it possible for future cross-chains operation and added public information on BSC network to better recognized and to be easy working with exchange partners. </Text>
+      <Text>SEL v2 is an improvement to SEL v1.</Text>
+      <Text>The second version adds mint and burn functions, which enables future cross-chains operation and public information onto the BSC network.</Text>
       <SubTitle>Why should I swap for SEL v2?</SubTitle>
-      <Text>The SEL v1 that was airdropped in the first session will be abandoned, that meant it won't be supported in the future of Selendra development. All holders must swap to SEL v2 in order to grow with the network and token future value. The swap will be opened till December 31st, 2021.</Text>
+      <Text>The SEL v1 that was airdropped in the first session won't be supported in future Selendra developments.</Text>
+      <Text>All holders must swap to SEL v2 in order to grow with the network and token future value. </Text>
+      <Text>The swap will be open till December 31st, 2021.</Text>
     </Container>
   )
 }

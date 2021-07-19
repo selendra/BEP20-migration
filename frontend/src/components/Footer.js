@@ -14,17 +14,19 @@ export default function FooterComponent() {
       <SeparateLine />
       <Footer>
         <Row>
-          <Col span={8}>
-            <FooterLogo src={selendra} alt='selendra' />
+          <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+            <Row justify='center'>
+              <FooterLogo src={selendra} alt='selendra' />
+            </Row>
           </Col>
-          <Col span={8}>
-            <Row justify='space-around' align='middle' style={{height: '100%'}}>
+          <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+            <Row justify='space-around' align='middle' style={{height: '100%', padding: '20px 0'}}>
               <NavLinkStyled to='/howto'>How to</NavLinkStyled>
               <NavLinkStyled to='/faqs'>FAQs</NavLinkStyled>
               <NavLinkStyled to='/about'>About</NavLinkStyled>
             </Row>
           </Col>
-          <Col span={8}>
+          <Col xs={24} sm={24} md={8} lg={8} xl={8}>
             <Row justify='space-around' align='middle' style={{height: '100%'}}>
               <a href='https://www.facebook.com/selendraio'>
                 <Facebook />

@@ -4,9 +4,10 @@ export default function AboutPage() {
   return (
     <Container>
       <Title>About</Title>
-      <Text>Selendra is a multi-blockchain nominated proof-of-stake cryptographic system built to facilitate micro-economic transactions. It is designed to be interoperable with other open Blockchains and developable by developers and students with very minimal learning curve, and ease of use for end-users to interact and benefits from blockchain technology.</Text>
-      <Text>Selendra represents a global network of organizations and individuals whose growth and stability are made possible through the deployment of  value-added applications.</Text>
-      <Text>Our mission is to empower young developers throughout the world to quickly and easily learn to create blockchain user-friendly applications for commerce, trade, education, entertainment, storing of data, decentralized computing, assets tokenization and much more.</Text>
+      <Text>Selendra is a multi-blockchain nominated proof-of-stake cryptographic system built to facilitate micro-economic transactions.</Text>
+      <Text>It is designed to be interoperable with other open Blockchains and developable by developers and students with very minimal learning curve, and ease of use for end-users to interact and benefit from blockchain technology.</Text>
+      <Text>Selendra represents a global network of organizations and individuals whose growth and stability are made possible through the deployment of value-added applications.</Text>
+      <Text>Our mission is to empower young developers throughout the world to quickly and easily learn to create blockchain user-friendly applications for commerce, trade, education, entertainment, data storage, decentralized computing, asset tokenization, and much more.</Text>
     </Container>
   )
 }

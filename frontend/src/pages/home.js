@@ -159,9 +159,9 @@ export default function HomePage() {
         </CardStyled>
         <br/>
         <Subtitle>SEL Token v2 Feature:</Subtitle>
-        <p>Token contract verification and other related information to SEL token v2, all available on BSCscan like Whitepaper, Social Channels and other official info.</p>
-        <p>🚀 For future cross-chains transaction; this version is designed to work with others chains like Polygon, Ethereum and other networks.</p>
-        <p>🚀 Use the Token to purchase invitations and share the referral link to join Selendra airdrop opportunity.</p>
+        <p>Token contract verification and other related information including whitepaper, social channels and other official info are available on BSCscan.</p>
+        <p>🚀 Cross-chain transaction friendly: This version is designed to work with other chains, such as Polygon, Ethereum, and other EVM compatibility.</p>
+        <p>🚀 Use the token to purchase invitations and share the referral link to participate in Selendra airdrops.</p>
       </Container>
     </Home>
   );
