@@ -4,12 +4,14 @@ import { Button, Input, Form, message, Modal, Row } from 'antd';
 import styled from 'styled-components';
 import swapContract from '../contract/swapContract.json';
 import { ContractInstance } from '../utils/useContract';
+import {Web3Instance} from '../utils/useWeb3'
 
 export default function HomePage() {
   const modalCustom = {
     background: "#131a35",
     borderRadius: "4px"
   }
+  const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState('');
   const [modal, setModal] = useState(false);
   const [modalConfirm, setModalConfirm] = useState(false);
@@ -24,19 +26,20 @@ export default function HomePage() {
     window.ethereum.on('accountsChanged', (accounts) => window.location.reload());
   }
 
-  useEffect(() => {
-    async function Validate() {
-      if(window.ethereum) {
-        await window.ethereum.request({ method: 'eth_requestAccounts' }).then(accounts => {
-          getBepTokenBalance(accounts[0]);
-        });
-        await window.ethereum.request({ method: 'eth_chainId' }).then(chainId => {
-          if(chainId !== '0x38') setModal(true);
-        })
-      } else {
-        message.error("Metamask not detected!!")
-      }
+  async function Validate() {
+    if(window.ethereum) {
+      await window.ethereum.request({ method: 'eth_requestAccounts' }).then(accounts => {
+        getBepTokenBalance(accounts[0]);
+      });
+      await window.ethereum.request({ method: 'eth_chainId' }).then(chainId => {
+        if(chainId !== '0x38') setModal(true);
+      })
+    } else {
+      message.error("Metamask not detected!!")
     }
+  }
+
+  useEffect(() => {
     Validate();
   }, []);
 
@@ -77,12 +80,32 @@ export default function HomePage() {
         signer
       );
       // Approve Spending from Swap contract
-      await TokenContract.approve(
+      const result = await TokenContract.approve(
         SwapContractAddress,
         ethers.utils.parseUnits(Math.pow(10, 18).toString(), 18)
-      );
+      )
       console.log("Approving Old Sel contract to spend");
+
+      setLoading(true);
+      async function PendingApprove() {
+        const web3 = Web3Instance();
+        await web3.eth.getTransactionReceipt(result.hash, async function (error, result) { 
+          if(result === null || error) {
+            setTimeout(() => {
+              PendingApprove();
+            }, 2000);
+          } else if(result !== null || !error) { 
+            swap();
+          }
+        })
+        
+      }
+
+      setTimeout(() => {
+        PendingApprove();
+      }, 2000);
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   }
@@ -95,18 +118,40 @@ export default function HomePage() {
         signer
       );
       console.log("Start Swapping Amount: ", amount); 
-      await SwapContract.swap(ethers.utils.parseUnits(amount, 18));
+      setLoading(true);
+      const data = await SwapContract.swap(ethers.utils.parseUnits(amount, 18));
+
+      async function PendingSwap() {
+        const web3 = Web3Instance();
+        await web3.eth.getTransactionReceipt(data.hash, async function (error, result) { 
+          if(result === null || error) {
+            setTimeout(() => {
+              PendingSwap();
+            }, 2000);
+          } else if(result !== null || !error) { 
+            setLoading(false);
+            setModalConfirm(false);
+            Validate();
+          }
+        })
+      }
+
+      setTimeout(() => {
+        PendingSwap();
+      }, 2000);
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   }
 
   function handleSwap() {
     if(!amount) return message.error("Input the amount!!");
-    if(!allowance){
+    if(!balance) return message.error("Please check your balance!!");
+    if(!allowance) {
       message.error("Please approve to be able to swap!!");
       return approve();
-    } 
+    }
     setModalConfirm(true);
   }
 
@@ -142,7 +187,7 @@ export default function HomePage() {
                 </CardStyled>
               </Row>
               <br/>
-              <ButtonSwap type='ghost' onClick={swap}>Confirm</ButtonSwap>
+              <ButtonSwap type='ghost' onClick={swap} loading={loading}>Confirm</ButtonSwap>
             </div>
           </Row>
         </Modal>
@@ -154,7 +199,7 @@ export default function HomePage() {
                 <InputStyled placeholder="0.00" addonAfter={`Max: ${balance}`} value={amount} onChange={(e) => setAmount(e.target.value)} />
               </FormItem>
             </Form>
-            <ButtonSwap type='ghost' onClick={handleSwap}>Swap</ButtonSwap>
+            <ButtonSwap type='ghost' onClick={handleSwap} loading={loading}>Swap</ButtonSwap>
           </CardBody>
         </CardStyled>
         <br/>
