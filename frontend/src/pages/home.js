@@ -9,7 +9,8 @@ import {Web3Instance} from '../utils/useWeb3'
 export default function HomePage() {
   const modalCustom = {
     background: "#131a35",
-    borderRadius: "4px"
+    borderRadius: "4px",
+    padding: '20px'
   }
   const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState('');
@@ -175,21 +176,16 @@ export default function HomePage() {
           bodyStyle={modalCustom}
           onCancel={()=>setModalConfirm(false)}
         >
-          <Row justify='center'>
-            <div style={{textAlign: 'center'}}>
-              <Title>Swaping</Title>
-              <Row align='middle'>
-                <CardStyled>
-                  <CardBody>
-                    <Subtitle>SEL v1 ➡️ SEL v2</Subtitle>
-                    <Text>{amount} of SEL</Text>
-                  </CardBody>
-                </CardStyled>
-              </Row>
-              <br/>
-              <ButtonSwap type='ghost' onClick={swap} loading={loading}>Confirm</ButtonSwap>
-            </div>
-          </Row>
+          <div style={{textAlign: 'center'}}>
+            <Title>Swaping</Title>
+            <CardStyled>
+              <CardBody>
+                <Subtitle>SEL v1 ➡️ SEL v2</Subtitle>
+                <Text>{amount} of SEL</Text>
+              </CardBody>
+            </CardStyled>
+            <ButtonSwap type='ghost' onClick={swap} loading={loading}>Confirm</ButtonSwap>
+          </div>
         </Modal>
         <Title>Upgrade SEL v2</Title>
         <CardStyled>
@@ -225,13 +221,14 @@ const Title = styled.h1`
   text-align: center;
   color: #fff;
   font-weight: 800;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 40px;
 `
 const CardStyled = styled.div`
   background: linear-gradient(245.22deg,#c200fb 7.97%,#3772ff 49.17%,#3773fe 0,#5ac4be 92.1%);
   border-radius: 4px;
   padding: 1px;
+  margin: 10px 0;
 `
 const CardBody = styled.div`
   background-color: #131a35;
