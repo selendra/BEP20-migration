@@ -26,7 +26,8 @@ contract TokenSwap {
             "Old Token allowance too low"
         );
         _safeTransferFrom(oldToken, msg.sender, admin, _amount);
-        _safeTransferFrom(newToken, admin, msg.sender, _amount);
+        //the token holder will recived double of their amount.
+        _safeTransferFrom(newToken, admin, msg.sender, (_amount * 2));
     }
 
     function _safeTransferFrom(
