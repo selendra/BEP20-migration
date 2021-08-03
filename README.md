@@ -9,10 +9,10 @@
 
 #### Progress
 - [x] Modified Contract.
-- [ ] Deploy on Testnet.
-- [ ] Web UI Intergration (Testnet).
-- [ ] Mobile (Bitriel Wallet) Integration (Testnet).
-- [ ] Deploy on Mainnet.
+- [x] Deploy on Testnet.
+- [x] Web UI Intergration (Testnet).
+- [x] Mobile (Bitriel Wallet) Integration (Testnet).
+- [x] Deploy on Mainnet.
 - [ ] Web UI Intergration (Mainnet).
 - [ ] Mobile (Bitriel Wallet) Integration (Mainnet).
 
