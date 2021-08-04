@@ -18,7 +18,7 @@ export default function HomePage() {
   const [modalConfirm, setModalConfirm] = useState(false);
   const [balance, setBalance] = useState('');
   const [allowance, setAllowance] = useState('');
-  const SwapContractAddress = "0x54419268c31678C31e94dB494C509193d7d2BB5D";
+  const SwapContractAddress = "0xa857d61c5802C4e299a5B972DE1ACCaD085cE765";
   const SwapContractABI = swapContract;
 
   let signer;
@@ -55,7 +55,7 @@ export default function HomePage() {
 
   try {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-
+    
     provider.listAccounts()
     .then(function(accounts) {
       signer = provider.getSigner(accounts[0]);
@@ -150,7 +150,6 @@ export default function HomePage() {
     if(!amount) return message.error("Input the amount!!");
     if(!balance) return message.error("Please check your balance!!");
     if(!allowance) {
-      message.error("Please approve to be able to swap!!");
       return approve();
     }
     setModalConfirm(true);
